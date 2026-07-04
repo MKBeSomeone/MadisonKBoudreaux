@@ -1,0 +1,113 @@
+.suggestion-section {
+  padding-bottom: 40px;
+}
+
+.suggestion-form {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.suggestion-form-label {
+  font-weight: 600;
+  color: var(--color-ink);
+  font-size: 0.95rem;
+}
+
+.suggestion-form textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.suggestion-form textarea:focus {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 1px;
+}
+
+.suggestion-form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.suggestion-form-hint {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
+.suggestion-signed-out {
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.suggestion-card {
+  padding: 20px 24px;
+}
+
+.suggestion-text {
+  font-size: 1.02rem;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.suggestion-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 12px;
+}
+
+.suggestion-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.suggestion-rating-pending {
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+  font-style: italic;
+}
+
+.star-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--color-border);
+  cursor: default;
+  padding: 2px;
+}
+
+.star.is-filled {
+  color: var(--color-mustard);
+}
+
+.star-rating.is-interactive .star {
+  cursor: pointer;
+}
+
+.star-rating.is-interactive .star:hover {
+  transform: scale(1.15);
+}

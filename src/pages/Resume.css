@@ -1,0 +1,65 @@
+.resume-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.resume-section {
+  padding-bottom: 48px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.timeline-item {
+  padding: 24px 28px;
+}
+
+.timeline-item.is-current {
+  border-left: 4px solid var(--color-coral);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.timeline-role {
+  font-size: 1.2rem;
+  color: var(--color-ink);
+}
+
+.timeline-company {
+  margin: 4px 0 0;
+  color: var(--color-coral-dark);
+  font-weight: 600;
+}
+
+.timeline-dates {
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.timeline-bullets {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  color: var(--color-ink-soft);
+}
+
+.timeline-bullets li {
+  margin-bottom: 6px;
+}
+
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}

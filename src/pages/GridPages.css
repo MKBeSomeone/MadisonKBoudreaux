@@ -1,0 +1,52 @@
+/* Shared card-grid styling reused by Projects, Suggestion Warehouse,
+   3D Workshop, Celebrating Others, Recipes, and Corgi Corner. */
+
+.grid-section {
+  padding-bottom: 64px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.grid-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grid-card-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.grid-card-title {
+  font-size: 1.15rem;
+  color: var(--color-ink);
+}
+
+.grid-card-meta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-coral-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.grid-card-body {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.empty-note {
+  margin-top: 12px;
+  padding: 18px 22px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+}

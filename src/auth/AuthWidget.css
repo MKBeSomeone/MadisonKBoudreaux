@@ -1,0 +1,49 @@
+.auth-widget-signin {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-teal-dark);
+  background: transparent;
+  color: var(--color-teal-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.auth-widget-signin:hover {
+  background: var(--color-teal-dark);
+  color: #fff;
+}
+
+.auth-widget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.auth-widget-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-widget-signout {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.auth-widget-signout:hover {
+  background: var(--color-bg-alt);
+}
