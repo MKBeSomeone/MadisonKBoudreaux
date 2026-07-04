@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from './AuthContext';
 import './AuthModal.css';
 
@@ -42,7 +43,7 @@ export default function AuthModal({ onClose }) {
     }
   };
 
-  return (
+  return createPortal(
     <div className="auth-modal-backdrop" onClick={onClose}>
       <div className="auth-modal card" onClick={(e) => e.stopPropagation()}>
         <button className="auth-modal-close" onClick={onClose} aria-label="Close">×</button>
@@ -100,6 +101,7 @@ export default function AuthModal({ onClose }) {
           )}
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
