@@ -174,6 +174,20 @@ window.suggestionsAPI = {
     });
   },
 
+  async updateCorgiPost(id, title, body, photoUrls) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can edit Corgi Corner posts.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await updateDoc(doc(db, 'corgiPosts', id), {
+      title,
+      body,
+      photoUrls: (photoUrls || []).filter(Boolean),
+      updatedAt: serverTimestamp(),
+    });
+  },
+
   async deleteCorgiPost(id) {
     const user = requireAuth();
     if (user.email !== ADMIN_EMAIL) {
