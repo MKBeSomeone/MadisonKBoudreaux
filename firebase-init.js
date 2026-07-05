@@ -30,6 +30,7 @@ import {
   onSnapshot,
   doc,
   updateDoc,
+  deleteDoc,
   serverTimestamp,
   query,
   orderBy,
@@ -137,6 +138,15 @@ window.suggestionsAPI = {
       rating,
       ratedAt: serverTimestamp(),
     });
+  },
+
+  async deleteSuggestion(id) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can delete suggestions.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await deleteDoc(doc(db, 'suggestions', id));
   },
 
   subscribeSuggestions(callback) {
