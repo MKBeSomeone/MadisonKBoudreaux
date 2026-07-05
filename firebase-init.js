@@ -156,6 +156,40 @@ window.suggestionsAPI = {
       callback(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
     });
   },
+
+  // ---- Corgi Corner (admin-only posts, public read) ----
+
+  async submitCorgiPost(title, body, photoUrls) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can post to Corgi Corner.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await addDoc(collection(db, 'corgiPosts'), {
+      title,
+      body,
+      photoUrls: (photoUrls || []).filter(Boolean),
+      createdAt: serverTimestamp(),
+      authorUid: user.uid,
+    });
+  },
+
+  async deleteCorgiPost(id) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can delete Corgi Corner posts.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await deleteDoc(doc(db, 'corgiPosts', id));
+  },
+
+  subscribeCorgiPosts(callback) {
+    if (!db) return () => {};
+    const q = query(collection(db, 'corgiPosts'), orderBy('createdAt', 'desc'));
+    return onSnapshot(q, (snap) => {
+      callback(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    });
+  },
 };
 
 emit('suggestions:ready', { configured });
