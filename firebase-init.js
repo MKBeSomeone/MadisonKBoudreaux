@@ -252,6 +252,54 @@ window.suggestionsAPI = {
       callback(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
     });
   },
+
+  // ---- Recipes (admin-only posts, public read + public search) ----
+
+  async submitRecipePost(title, body, photoUrls) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can post a recipe.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await addDoc(collection(db, 'recipePosts'), {
+      title,
+      body,
+      photoUrls: (photoUrls || []).filter(Boolean),
+      createdAt: serverTimestamp(),
+      authorUid: user.uid,
+    });
+  },
+
+  async updateRecipePost(id, title, body, photoUrls) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can edit recipes.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await updateDoc(doc(db, 'recipePosts', id), {
+      title,
+      body,
+      photoUrls: (photoUrls || []).filter(Boolean),
+      updatedAt: serverTimestamp(),
+    });
+  },
+
+  async deleteRecipePost(id) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can delete recipes.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await deleteDoc(doc(db, 'recipePosts', id));
+  },
+
+  subscribeRecipePosts(callback) {
+    if (!db) return () => {};
+    const q = query(collection(db, 'recipePosts'), orderBy('createdAt', 'desc'));
+    return onSnapshot(q, (snap) => {
+      callback(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    });
+  },
 };
 
 emit('suggestions:ready', { configured });

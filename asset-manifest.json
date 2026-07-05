@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MadisonKBoudreaux/static/css/main.aff2ff21.css",
-    "main.js": "/MadisonKBoudreaux/static/js/main.b73b9ffd.js",
+    "main.css": "/MadisonKBoudreaux/static/css/main.805c5b23.css",
+    "main.js": "/MadisonKBoudreaux/static/js/main.c5844a15.js",
     "static/js/453.171f0638.chunk.js": "/MadisonKBoudreaux/static/js/453.171f0638.chunk.js",
     "index.html": "/MadisonKBoudreaux/index.html",
-    "main.aff2ff21.css.map": "/MadisonKBoudreaux/static/css/main.aff2ff21.css.map",
-    "main.b73b9ffd.js.map": "/MadisonKBoudreaux/static/js/main.b73b9ffd.js.map",
+    "main.805c5b23.css.map": "/MadisonKBoudreaux/static/css/main.805c5b23.css.map",
+    "main.c5844a15.js.map": "/MadisonKBoudreaux/static/js/main.c5844a15.js.map",
     "453.171f0638.chunk.js.map": "/MadisonKBoudreaux/static/js/453.171f0638.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aff2ff21.css",
-    "static/js/main.b73b9ffd.js"
+    "static/css/main.805c5b23.css",
+    "static/js/main.c5844a15.js"
   ]
 }
