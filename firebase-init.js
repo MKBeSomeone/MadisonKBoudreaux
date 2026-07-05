@@ -204,6 +204,54 @@ window.suggestionsAPI = {
       callback(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
     });
   },
+
+  // ---- 3D Workshop (admin-only posts, public read) ----
+
+  async submitWorkshopPost(title, body, photoUrls) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can post to the 3D Workshop.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await addDoc(collection(db, 'workshopPosts'), {
+      title,
+      body,
+      photoUrls: (photoUrls || []).filter(Boolean),
+      createdAt: serverTimestamp(),
+      authorUid: user.uid,
+    });
+  },
+
+  async updateWorkshopPost(id, title, body, photoUrls) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can edit 3D Workshop posts.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await updateDoc(doc(db, 'workshopPosts', id), {
+      title,
+      body,
+      photoUrls: (photoUrls || []).filter(Boolean),
+      updatedAt: serverTimestamp(),
+    });
+  },
+
+  async deleteWorkshopPost(id) {
+    const user = requireAuth();
+    if (user.email !== ADMIN_EMAIL) {
+      throw new Error('Only the site owner can delete 3D Workshop posts.');
+    }
+    if (!db) throw new Error('Firebase is not configured yet.');
+    await deleteDoc(doc(db, 'workshopPosts', id));
+  },
+
+  subscribeWorkshopPosts(callback) {
+    if (!db) return () => {};
+    const q = query(collection(db, 'workshopPosts'), orderBy('createdAt', 'desc'));
+    return onSnapshot(q, (snap) => {
+      callback(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    });
+  },
 };
 
 emit('suggestions:ready', { configured });
