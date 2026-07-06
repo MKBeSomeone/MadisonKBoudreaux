@@ -17,7 +17,7 @@ window.emailjsConfig = {
 };
 
 (function () {
-  var configured = window.emailjsConfig.publicKey !== 'REPLACE_ME';
+  var configured = window.emailjsConfig.publicKey !== 'mQ-zhTodZudIEQE6P';
   if (configured && window.emailjs) {
     window.emailjs.init({ publicKey: window.emailjsConfig.publicKey });
   }
