@@ -116,11 +116,12 @@ window.suggestionsAPI = {
     await signOut(auth);
   },
 
-  async submitSuggestion(text) {
+  async submitSuggestion(text, category) {
     const user = requireAuth();
     if (!db) throw new Error('Firebase is not configured yet.');
     await addDoc(collection(db, 'suggestions'), {
       text,
+      category: category || 'Other',
       authorUid: user.uid,
       authorName: user.displayName || user.email || 'Anonymous',
       createdAt: serverTimestamp(),
