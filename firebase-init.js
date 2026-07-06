@@ -17,11 +17,8 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  updateProfile,
 } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js';
 import {
   getFirestore,
@@ -93,22 +90,6 @@ window.suggestionsAPI = {
   async signInWithGoogle() {
     if (!auth) throw new Error('Firebase is not configured yet.');
     await signInWithPopup(auth, new GoogleAuthProvider());
-  },
-
-  async signUpWithEmail(name, email, password) {
-    if (!auth) throw new Error('Firebase is not configured yet.');
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-    if (name) {
-      await updateProfile(cred.user, { displayName: name });
-      emit('suggestions:auth-changed', {
-        user: { uid: cred.user.uid, email: cred.user.email, displayName: name },
-      });
-    }
-  },
-
-  async signInWithEmail(email, password) {
-    if (!auth) throw new Error('Firebase is not configured yet.');
-    await signInWithEmailAndPassword(auth, email, password);
   },
 
   async signOutUser() {
