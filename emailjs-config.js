@@ -11,9 +11,9 @@
 // ---------------------------------------------------------------------------
 
 window.emailjsConfig = {
-  publicKey: 'REPLACE_ME',
-  serviceId: 'REPLACE_ME',
-  templateId: 'REPLACE_ME',
+  publicKey: 'mQ-zhTodZudIEQE6P',
+  serviceId: 'service_317d2vx',
+  templateId: 'template_ooc6e6k',
 };
 
 (function () {
